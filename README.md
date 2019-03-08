@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 消費税計算アプリ
+任意の消費税設定に対して計算をします.
 
-## Available Scripts
+## About
+JSXで記述されたReactを利用したコードを, Babelを用いてPureなJavascriptに変換した上で
+Apache Web serverにデプロイしています.
 
-In the project directory, you can run:
+## Attention
+- あくまでテスト用ということで, SSLによるHTTPS化は行っていません.
+こちらについては
+  - Apacheで(鍵暗号のファイルを指定して)直接設定する
+  - AWSのサービス(Route53等)を用いてHTTPSの設定をする
+ 等の方法で設定する事になるかと思います.
+- 開発環境の都合等でMYSQLとほぼ同等で互換性のあるMariaDBを利用しています.
 
-### `npm start`
+ - Reactを使用しているため, deployに関してはbuildしてサーバーに配備しますが,
+ 開発ではApache等の環境を使用する事無くテストできるようになっています. 
+ 
+## Requirement
+- `npm`(or `yarn`)
+- packages written in `package.json`
+  - [`react`]() (and some components of react)
+  - [`mysql`](https://github.com/mysqljs/mysql)
+- MYSQL Database
+- Apache Web server
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Install
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Usage
 
-### `npm test`
+## Use
+- Apache Web server -> version 2.4.25
+- MYSQL -> mysql  Ver 15.1 Distrib 10.1.37-MariaDB
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Licence
+[MIT]()
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Author
+[kkiyama117](https://github.com/kkiyama117)
