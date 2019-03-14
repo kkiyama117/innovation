@@ -70,7 +70,6 @@ function get_rates_from_date_str(rates, date_str) {
         return {rate: 0};
     } else {
         return rate_data;
-
     }
 }
 

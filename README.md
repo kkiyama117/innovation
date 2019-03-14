@@ -17,24 +17,29 @@ Apache Web serverにデプロイしています.
 - `npm`(or `yarn`)
 - npm packages written in `package.json`
   - [`react`]() (and some components of react)
-  - [`mysql2`](https://github.com/sidorares/node-mysql2)
-- MYSQL Database
-- Apache Web server
+  - [API server](https://github.com/kkiyama117/innovation_server)
 
 ## Install
-### Initialize database
-1. はじめにmysqlのUserを用意する.
-2. `mysql -u (userの名前) -p < ./lib/initialize.sql` を実行する
-3. `src/mysql.js` の DBの設定を変更する.(host, username, password)
+1. `utils.js` の1行目の `API_SERVER_URL` を用意したAPIサーバーのものに変更します.
+2.  また, `package.json` の内部の設定を変更します.
+3. `npm install` or `yarn` を実行してプログラムの用意をする.
+4. `yarn run build` で `build` フォルダが作成され, その内部にbuildされたjsが生成されます.
+
+
+### development
+上記 1,3を実行した後で `yarn start` を実行するとlocalhost:3030で起動します.
 
 ## Usage
+実行するとシングルページアプリケーションであるHPが表示されるのみです.
 
 ## Use
+- OS -> Raspbian GNU/Linux 9.8 
 - Apache Web server -> version 2.4.25
-- MYSQL DB -> mysql  Ver 15.1 Distrib 10.1.37-MariaDB
+- node -> v11.10.1
+- npm -> 6.7.0
 
 ## Licence
-[MIT]()
+[MIT](https://github.com/kkiyama117/innovation/blob/master/LICENSE)
 
 ## Author
 [kkiyama117](https://github.com/kkiyama117)
