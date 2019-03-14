@@ -18,19 +18,23 @@ Apache Web serverにデプロイしています.
  
 ## Requirement
 - `npm`(or `yarn`)
-- packages written in `package.json`
+- npm packages written in `package.json`
   - [`react`]() (and some components of react)
-  - [`mysql`](https://github.com/mysqljs/mysql)
+  - [`mysql2`](https://github.com/sidorares/node-mysql2)
 - MYSQL Database
 - Apache Web server
 
 ## Install
+### Initialize database
+1. はじめにmysqlのUserを用意する.
+2. `mysql -u (userの名前) -p < ./lib/initialize.sql` を実行する
+3. `src/mysql.js` の DBの設定を変更する.(host, username, password)
 
 ## Usage
 
 ## Use
 - Apache Web server -> version 2.4.25
-- MYSQL -> mysql  Ver 15.1 Distrib 10.1.37-MariaDB
+- MYSQL DB -> mysql  Ver 15.1 Distrib 10.1.37-MariaDB
 
 ## Licence
 [MIT]()

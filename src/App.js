@@ -1,28 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import RateList from "./RateList";
+import RateInput from "./RateInput";
+import RateCalc from "./RateCalc";
+
+import {get_rates_data} from "./utils";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            rates: []
+        };
+        this.reloadRateAPI = this.reloadRateAPI.bind(this)
+    }
+
+    // Ratesを更新する関数
+    reloadRateAPI() {
+        get_rates_data(rates => {
+            this.setState({rates: rates})
+        });
+    }
+
+
+    // componentがMountされた時
+    componentWillMount() {
+        this.reloadRateAPI();
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <h1>消費税計算システム</h1>
+                <h2>消費税設定の一覧</h2>
+                <RateList rates={this.state.rates} reloadRateAPI={this.reloadRateAPI}/>
+                <h2>消費税設定の新規登録</h2>
+                <RateInput reloadRateAPI={this.reloadRateAPI}/>
+                <h2>消費税計算</h2>
+                <RateCalc rates={this.state.rates}/>
+            </div>
+        );
+    }
 }
 
 export default App;
