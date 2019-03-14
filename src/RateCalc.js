@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {calc_taxed_price} from "./utils";
+import './styles/RateList.css';
 
 class RateCalc extends Component {
     constructor(props) {
@@ -34,9 +35,11 @@ class RateCalc extends Component {
                     <input placeholder="1000" name='price' value={this.state.price} onChange={this.handleChange}/>円
                     <button onClick={this.handleClick}>計算</button>
                 </div>
-                <div>
-                    <input name="calculated_price" value={this.state.calculated_price}/>円
-                </div>
+                {/* 計算結果表示部 inputに表示するなら下記のdiv とコメントアウト部分を入れ替え */}
+                {/*<div>*/}
+                    {/*<input name="calculated_price" value={this.state.calculated_price}/>円 (税込み)*/}
+                {/*</div>*/}
+                <div>{this.state.calculated_price}円 (税込み)</div>
             </div>
         )
     }

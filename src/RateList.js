@@ -8,7 +8,7 @@ class RateList extends Component {
         });
 
         return (
-            <div>
+            <div align="center">
                 <table>
                     <thead>
                     <tr>
