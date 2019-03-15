@@ -63,7 +63,7 @@ function calc_taxed_price(rates, date, price) {
 // 日付 から対応する税率を返す
 function get_rates_from_date_str(rates, date_str) {
     const date = new Date(date_str);
-    let rates_data_before_date = rates.filter(item => item.start_date < date);
+    let rates_data_before_date = rates.filter(item => (item.start_date <= date));
     let rate_data = sort_rates_filter(rates_data_before_date).slice(-1)[0];
     if (typeof rate_data === "undefined") {
         return {rate: 0};
