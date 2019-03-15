@@ -57,7 +57,7 @@ function sort_rates_filter(rates) {
 function calc_taxed_price(rates, date, price) {
     let rate_data = get_rates_from_date_str(rates, date);
     let rate = rate_data.rate;
-    return (1 + Number(rate)) * price;
+    return Math.round((1 + Number(rate)) * price);
 }
 
 // 日付 から対応する税率を返す
