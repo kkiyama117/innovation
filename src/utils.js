@@ -8,7 +8,6 @@ function get_rates_data(callback) {
     }).then(res => {
         return res.json();
     }).then(res => {
-        console.log(res);
         const rates = res.map(x => {
             return {
                 id: x.id,
@@ -16,7 +15,7 @@ function get_rates_data(callback) {
                 rate: x.rate
             }
         });
-        callback(sort_rates(rates));
+        callback(sort_rates_filter(rates));
         callback(rates);
     });
 }
@@ -42,7 +41,7 @@ function delete_rate_data(id) {
 }
 
 // 与えられたArrayをそのstart_date属性でソートします
-function sort_rates(rates) {
+function sort_rates_filter(rates) {
     return rates.sort(function (a, b) {
         if (a.start_date < b.start_date) {
             return -1;
@@ -64,8 +63,8 @@ function calc_taxed_price(rates, date, price) {
 // 日付 から対応する税率を返す
 function get_rates_from_date_str(rates, date_str) {
     const date = new Date(date_str);
-    const sorted_rates = sort_rates(rates);
-    let rate_data = sorted_rates.find(item => item.start_date < date);
+    let rates_data_before_date = rates.filter(item => item.start_date < date);
+    let rate_data = sort_rates_filter(rates_data_before_date).slice(-1)[0];
     if (typeof rate_data === "undefined") {
         return {rate: 0};
     } else {
@@ -73,4 +72,4 @@ function get_rates_from_date_str(rates, date_str) {
     }
 }
 
-export {get_rates_data, post_rate_data, delete_rate_data, sort_rates, calc_taxed_price};
+export {get_rates_data, post_rate_data, delete_rate_data, sort_rates_filter, calc_taxed_price};
